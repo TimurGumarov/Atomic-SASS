@@ -1,0 +1,110 @@
+// Based on Emmet snippets Cheat-Sheet -------------------------------
+// you can check it here: https://docs.emmet.io/cheat-sheet/ ---------
+
+// MENU --------------------------------------------------------------
+// 1. Visual Formatting ----------------------------------------------
+// - 1.1 position ------------------------------------------------------
+// - 1.2 top -----------------------------------------------------------
+// 6 Background ------------------------------------------------------
+// - 6.1 bg ------------------------------------------------------------
+
+// 1. Visual Formatting ----------------------------------------------
+// - 1.1 position ------------------------------------------------------
+$pos: ("_null": 0);
+@mixin pos($key: "-") {
+	$true: pos_f($key);
+	$key_value: relative;
+	@if $true {
+		@if $key == s {
+			$key_value: static;
+		} @else if $key == a {
+			$key_value: absolute;
+		} @else if $key == f {
+			$key_value: fixed;
+		}
+		@if $key == "-" {
+			.pos {
+				position: $key_value;
+			}
+		} @else {
+			.pos-#{$key} {
+				position: $key_value;
+			}
+		}
+	}
+}
+@function pos_f($key) {
+	$q_pos: quote($key);
+	$map_q_pos: ($q_pos: 1);
+	@if map_has_key($pos, $q_pos) {
+		@return false;
+	}
+	@else {
+		$pos_cache: map_merge($pos, $map_q_pos);
+		$pos: $pos_cache !global;
+		@return true;
+	}
+}
+// - 1.2 top -----------------------------------------------------------
+$top: ("_null": 0);
+@mixin top($key: "-") {
+	$true: top_f($key);
+	$key_value: auto;
+	@if $true {
+		@if $key == "-" {
+			.top {
+				top: $key_value;
+			}
+		} @else {
+			.top-#{$key} {
+				@if $key == a {
+					top: $key_value;
+				} @else {
+					top: $key;
+				}
+			}
+		}
+	}
+}
+@function top_f($key) {
+	$q_top: quote($key);
+	$map_q_top: ($q_top: 1);
+	@if map_has_key($top, $q_top) {
+		@return false;
+	}
+	@else {
+		$top_cache: map_merge($top, $map_q_top);
+		$top: $top_cache !global;
+		@return true;
+	}
+}
+// 6 Background ------------------------------------------------------
+// - 6.1 bg ------------------------------------------------------------
+$bg: ("_null": 0);
+@mixin bg($key: "-") {
+	$true: bg_f($key);
+	$key_value: #000;
+	@if $true {
+		@if $key == "-" {
+			.bg {
+				background-key: $key_value;
+			}
+		} @else {
+			.bg-#{$key} {
+				background-key: $key;
+			}
+		}
+	}
+}
+@function bg_f($key) {
+	$q_key: quote($key);
+	$map_q_key: ($q_key: 1);
+	@if map_has_key($bg, $q_key) {
+		@return false;
+	}
+	@else {
+		$bg_cache: map_merge($bg, $map_q_key);
+		$bg: $bg_cache !global;
+		@return true;
+	}
+}

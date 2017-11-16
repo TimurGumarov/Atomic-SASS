@@ -1,0 +1,21 @@
+{
+  "name": "atomic_sass",
+  "version": "0.1.0",
+  "description": "Atomic SASS project. It's just started so it not good for work now.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Timur Gumarov | tim@timlion.ru",
+  "license": "MIT",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-watch": "^4.3.11",
+    "run-sequence": "^2.2.0"
+  }
+}
